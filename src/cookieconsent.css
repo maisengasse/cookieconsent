@@ -1424,3 +1424,17 @@ html.force--consent.show--consent body{
 }
 
 /** END IE FIXES **/
+
+/** Maisengasse Changes **/
+#cc--main {
+    backdrop-filter: blur(10px);
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+}
+#s-ttl img {
+    height: 40px;
+}
+
+/** END Maisengasse Changes **/
