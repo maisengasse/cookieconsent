@@ -255,6 +255,13 @@ function getCookieConsentBaseConfig() {
       is_regex: false,
     },
     {
+      col1: "cc_cookie",
+      col2: top.location.host,
+      col3: "1 Jahr",
+      col4: "Speichert die Cookieconsent-Einstellungen",
+      is_regex: false,
+    },
+    {
       col1: "csrftoken",
       col2: top.location.host,
       col3: "1 Jahr",
