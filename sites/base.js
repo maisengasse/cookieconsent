@@ -36,7 +36,7 @@ class CCConfig {
 }
 
 function getCookieConsentBaseConfig() {
-  var cookie = "🍪";
+//   var cookie = "🍪";
   var cfg = new CCConfig({
     current_lang: "de",
     autoclear_cookies: true, // default: false
@@ -84,7 +84,7 @@ function getCookieConsentBaseConfig() {
     languages: {
       de: {
         consent_modal: {
-          title: cookie + " Wir verwenden Cookies.",
+          title: "Wir verwenden Cookies.",
           description:
             "Unsere Website verwendet Cookies, um die grundlegende Funktionalität zu gewährleisten sowie die Zugriffe auf unserer Website zu analysieren. Hierzu ist es nötig Informationen an die jeweiligen Dienstanbieter weiterzugeben." +
             "<br /><br /> Einige Services verarbeiten personenbezogene Daten in den USA. Mit Ihrer Einwilligung zur Nutzung dieser Services stimmen Sie auch der Verarbeitung Ihrer Daten in den USA gemäß Art. 49 (1) lit. a DSGVO zu. Der EuGH stuft die USA als Land mit unzureichendem Datenschutz nach EU-Standards ein. So besteht etwa das Risiko, dass US-Behörden personenbezogene Daten in Überwachungsprogrammen verarbeiten, ohne bestehende Klagemöglichkeit für Europäer." +
