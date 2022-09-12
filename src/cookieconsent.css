@@ -785,9 +785,10 @@ CookieConsent settings modal
     bottom: 0;
     visibility: hidden;
     opacity: 0;
-    background: #070707;
-    background: rgba(4, 6, 8, .85);
-    background: var(--cc-overlay-bg);
+    /* background: #070707; */
+    /* background: rgba(4, 6, 8, .85); */
+    /* background: var(--cc-overlay-bg); */
+    backdrop-filter: blur(10px);
     display: none;
     transition: none;
 }
@@ -1420,19 +1421,21 @@ html.force--consent.show--consent body{
 
 .cc_div.ie #cm-ov,
 .cc_div.ie #cs-ov{
+    /* background:  none;
+    backdrop-filter: blur(10px); */
     filter: alpha(opacity=80);
 }
 
 /** END IE FIXES **/
 
 /** Maisengasse Changes **/
-#cc--main {
+/* #cc--main {
     backdrop-filter: blur(10px);
     width: 100vw;
     height: 100vh;
     top: 0;
     left: 0;
-}
+} */
 #s-ttl img {
     height: 40px;
 }

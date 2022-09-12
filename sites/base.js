@@ -47,7 +47,7 @@ function getCookieConsentBaseConfig() {
     auto_language: "document", // default: null; could also be 'browser' or 'document'
     // autorun: true,                           // default: true
     // delay: 0,                                // default: 0
-    // force_consent: false,
+    force_consent: true,
     // hide_from_bots: false,                   // default: false
     // remove_cookie_tables: false              // default: false
     // cookie_domain: location.hostname,        // default: current domain
@@ -74,7 +74,7 @@ function getCookieConsentBaseConfig() {
     // },
 
     // onAccept: function (cookie) {
-    //   console.log("onAccept fired ...");
+    //   alert("onAccept fired ...");
     // },
 
     // onChange: function (cookie, changed_preferences) {
