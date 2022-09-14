@@ -36,7 +36,7 @@ class CCConfig {
 }
 
 function getCookieConsentBaseConfig() {
-//   var cookie = "🍪";
+  var cookie = "🍪";
   var cfg = new CCConfig({
     current_lang: "de",
     autoclear_cookies: true, // default: false
