@@ -7,7 +7,9 @@ class CCConfig {
   }
   setLogo(logo) {
     for (const lang in this._config.languages) {
-      this._config.languages[lang].settings_modal.title = `<img src="${logo}" alt="Cookie Consent" />`;
+      this._config.languages[
+        lang
+      ].settings_modal.title = `<img src="${logo}" alt="Cookie Consent" />`;
     }
   }
   disableCategory(category) {
@@ -15,23 +17,78 @@ class CCConfig {
       this._config.languages[lang].settings_modal.blocks.forEach(
         (block, index) => {
           if (block.toggle && block.toggle.value == category) {
-            this._config.languages[lang].settings_modal.blocks.splice(index, 1)
+            this._config.languages[lang].settings_modal.blocks.splice(index, 1);
           }
-        })
+        }
+      );
     }
   }
-  setCookieTable(category, table) {
+  addCookieTable(category, table) {
+    for (const lang in this._config.languages) {
+      this._config.languages[lang].settings_modal.blocks.forEach(
+        (block, index) => {
+          if (block.toggle && block.toggle.value == category) {
+            let cfg = this._config.languages[lang].settings_modal.blocks[index];
+            let ct = cfg.cookie_table || [];
+            ct = ct.concat(table);
+            cfg.cookie_table = ct;
+          }
+        }
+      );
+    }
+  }
+  clearCookieTable(category) {
     for (const lang in this._config.languages) {
       this._config.languages[lang].settings_modal.blocks.forEach(
         (block, index) => {
           if (block.toggle && block.toggle.value == category) {
             this._config.languages[lang].settings_modal.blocks[
               index
-            ].cookie_table = table;
+            ].cookie_table = [];
           }
         }
       );
     }
+  }
+  setCookieTable(category, table) {
+    this.clearCookieTable(category);
+    this.addCookieTable(category, table);
+  }
+  addGoogleAnalytics() {
+    cfg.addCookieTable("analytics", [
+      {
+        col1: "^_ga",
+        col2: top.location.host,
+        col3: "2 Jahre",
+        col4: "Enthält eine zufallsgenerierte User-ID. Anhand dieser ID kann Google Analytics wiederkehrende User auf dieser Website wiedererkennen und die Daten von früheren Besuchen zusammenführen.",
+        is_regex: true,
+      },
+      {
+        col1: "_gcl_au",
+        col2: top.location.host,
+        col3: "90 Tage",
+        col4: "Enthält eine zufallsgenerierte User-ID.",
+        is_regex: false,
+      },
+    ]);
+  }
+  addMatomoAnalytics() {
+    cfg.addCookieTable("analytics", [
+      {
+        col1: "^_pk_id",
+        col2: top.location.host,
+        col3: "13 Monate",
+        col4: "Wird verwendet, um einige Details über den Benutzer zu speichern, wie z. B. die eindeutige Besucher-ID.",
+        is_regex: true,
+      },
+      {
+        col1: "^_pk_ses",
+        col2: top.location.host,
+        col3: "30 Minuten",
+        col4: "Kurzlebige Cookies, die verwendet werden, um Daten für den Besuch vorübergehend zu speichern",
+        is_regex: true,
+      },
+    ]);
   }
 }
 
@@ -220,9 +277,9 @@ function getCookieConsentBaseConfig() {
             {
               title: "Advertisement and Targeting cookies",
               description:
-                 "These cookies are used to show you advertisements that are likely to be of interest to you, based on your browsing habits." +
-                 " These cookies, provided by our content and/or advertising providers, may combine information they have collected from our website with other information they have collected independently of your web browser's activity on their network of websites." +
-                 " If you remove or disable these targeting or advertising cookies, you will still see advertisements, but they may not be relevant to you.",
+                "These cookies are used to show you advertisements that are likely to be of interest to you, based on your browsing habits." +
+                " These cookies, provided by our content and/or advertising providers, may combine information they have collected from our website with other information they have collected independently of your web browser's activity on their network of websites." +
+                " If you remove or disable these targeting or advertising cookies, you will still see advertisements, but they may not be relevant to you.",
               toggle: {
                 value: "targeting",
                 enabled: false,
@@ -239,7 +296,7 @@ function getCookieConsentBaseConfig() {
       },
     },
   });
-  cfg.setCookieTable("necessary", [
+  cfg.addCookieTable("necessary", [
     {
       col1: "sessionid",
       col2: top.location.host,
@@ -266,22 +323,6 @@ function getCookieConsentBaseConfig() {
       col2: top.location.host,
       col3: "1 Jahr",
       col4: "Sicherheitstoken für gültige HTTP-Anfragen",
-      is_regex: false,
-    },
-  ]);
-  cfg.setCookieTable("analytics", [
-    {
-      col1: "^_ga",
-      col2: top.location.host,
-      col3: "2 Jahre",
-      col4: "Enthält eine zufallsgenerierte User-ID. Anhand dieser ID kann Google Analytics wiederkehrende User auf dieser Website wiedererkennen und die Daten von früheren Besuchen zusammenführen.",
-      is_regex: true,
-    },
-    {
-      col1: "_gcl_au",
-      col2: top.location.host,
-      col3: "90 Tage",
-      col4: "Enthält eine zufallsgenerierte User-ID.",
       is_regex: false,
     },
   ]);
