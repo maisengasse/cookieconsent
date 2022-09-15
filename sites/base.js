@@ -7,9 +7,9 @@ class CCConfig {
   }
   setLogo(logo) {
     for (const lang in this._config.languages) {
-      this._config.languages[
-        lang
-      ].settings_modal.title = `<img src="${logo}" alt="Cookie Consent" />`;
+      let cfg = this._config.languages[lang];
+      cfg.settings_modal.title = `<img src="${logo}" alt="Cookie Consent" />`;
+      cfg.consent_modal.title = `<img src="${logo}" alt="Cookie Consent" /><br/><br />${cfg.consent_modal.title}`;
     }
   }
   disableCategory(category) {
@@ -219,7 +219,7 @@ function getCookieConsentBaseConfig() {
 
       en: {
         consent_modal: {
-          title: cookie + " We use cookies! ",
+          title: " We use cookies.",
           description:
             "Our website uses cookies to ensure basic functionality and to analyze access to our website. For this it is necessary to pass on information to the respective service provider." +
             "<br /><br />Some services process personal data in the USA. With your consent to the use of these services, you also agree to the processing of your data in the USA in accordance with Article 49 (1) lit. a GDPR. The ECJ classifies the USA as a country with insufficient data protection according to EU standards. For example, there is a risk that US authorities will process personal data in surveillance programs without Europeans being able to take legal action." +
