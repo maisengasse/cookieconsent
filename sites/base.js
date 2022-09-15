@@ -269,5 +269,21 @@ function getCookieConsentBaseConfig() {
       is_regex: false,
     },
   ]);
+  cfg.setCookieTable("analytics", [
+    {
+      col1: "^_ga",
+      col2: top.location.host,
+      col3: "2 Jahre",
+      col4: "Enthält eine zufallsgenerierte User-ID. Anhand dieser ID kann Google Analytics wiederkehrende User auf dieser Website wiedererkennen und die Daten von früheren Besuchen zusammenführen.",
+      is_regex: true,
+    },
+    {
+      col1: "_gcl_au",
+      col2: top.location.host,
+      col3: "90 Tage",
+      col4: "Enthält eine zufallsgenerierte User-ID.",
+      is_regex: false,
+    },
+  ]);
   return cfg;
 }

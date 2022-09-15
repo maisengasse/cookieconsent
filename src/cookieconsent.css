@@ -789,6 +789,7 @@ CookieConsent settings modal
     /* background: rgba(4, 6, 8, .85); */
     /* background: var(--cc-overlay-bg); */
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     display: none;
     transition: none;
 }
