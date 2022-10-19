@@ -1,11 +1,11 @@
 /** Light color-scheme **/
 :root{
     --cc-bg: #fff;
-    --cc-text: #2d4156;
-    --cc-btn-primary-bg: #2d4156;
+    --cc-text: #222;
+    --cc-btn-primary-bg: #333;
     --cc-btn-primary-text: var(--cc-bg);
     --cc-btn-primary-hover-bg: #1d2e38;
-    --cc-btn-secondary-bg: #eaeff2;
+    --cc-btn-secondary-bg: #eee;
     --cc-btn-secondary-text: var(--cc-text);
     --cc-btn-secondary-hover-bg: #d8e0e6;
     --cc-toggle-bg-off: #919ea6;
@@ -1437,8 +1437,12 @@ html.force--consent.show--consent body{
     top: 0;
     left: 0;
 } */
+#c-ttl img {
+   margin-top: 10px;
+   max-width: 200px;
+}
 #s-ttl img {
-    height: 40px;
+   height: 40px;
 }
 
 /** END Maisengasse Changes **/
