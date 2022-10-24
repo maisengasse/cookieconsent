@@ -54,6 +54,28 @@ class CCConfig {
     this.clearCookieTable(category);
     this.addCookieTable(category, table);
   }
+  addYouTubeConsent() {
+    cfg.addCookieTable("necessary", [
+      {
+        col1: "cc_youtube",
+        col2: top.location.host,
+        col3: "3 Jahre",
+        col4: "Speichert die Zustimmung zum Einbetten von YouTube-Videos.",
+        is_regex: false,
+      },
+    ]);
+  }
+  addGMapConsent() {
+    cfg.addCookieTable("necessary", [
+      {
+        col1: "cc_gmap",
+        col2: top.location.host,
+        col3: "3 Jahre",
+        col4: "Speichert die Zustimmung zum Einbetten von Google Maps.",
+        is_regex: false,
+      },
+    ]);
+  }
   addGoogleAnalytics() {
     cfg.addCookieTable("analytics", [
       {
